@@ -7,3 +7,6 @@ COMMENT=""
 deploy-with-comment:
 	npm run build
 	firebase deploy --only hosting -m "${COMMENT}"
+
+test:
+	npm run test
