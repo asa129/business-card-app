@@ -1,10 +1,20 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter, Route, Routes } from "react-router";
+import { Card } from "./cards/Card.tsx";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <BrowserRouter>
+      <ChakraProvider>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/cards/:id" element={<Card />} />
+        </Routes>
+      </ChakraProvider>
+    </BrowserRouter>
+  </StrictMode>
+);
