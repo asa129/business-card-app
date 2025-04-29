@@ -21,7 +21,8 @@ export const getUserById = async (id: string) => {
   }
 
   const user = data.map((data) => {
-    return new User(
+    console.log(data);
+    return User.createUserWithUrls(
       data.user_id,
       data.name,
       data.description,
