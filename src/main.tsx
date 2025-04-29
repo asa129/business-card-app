@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter, Route, Routes } from "react-router";
-import { Card } from "./cards/Card.tsx";
+import { UserCard } from "./cards/UserCard.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")!).render(
       <ChakraProvider>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/cards/:id" element={<Card />} />
+          <Route path="/cards/:id" element={<UserCard />} />
         </Routes>
       </ChakraProvider>
     </BrowserRouter>
