@@ -22,14 +22,21 @@ export const UserCard = function UserCard() {
     return <h1>loading…</h1>;
   }
   return (
-    <Box>
-      <>
+    <Box display="flex" justifyContent="center">
+      <Box width="sm" maxW={400}>
         {user?.map((user) => {
           return (
             <Card key={user.id}>
               <CardBody>
                 <p>名前:{user.name}</p>
-                <p>自己紹介:{user.description}</p>
+                <p>
+                  自己紹介:
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: user.description,
+                    }}
+                  />
+                </p>
                 <p>スキル:{user.skill_name}</p>
                 <p>
                   <a href={user.getGithubUrl(user.github_id)}>Github</a>
@@ -44,7 +51,7 @@ export const UserCard = function UserCard() {
             </Card>
           );
         })}
-      </>
+      </Box>
     </Box>
   );
 };
