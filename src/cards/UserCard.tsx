@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getUserById } from "../utils/supabaseFunctions";
 import { User } from "../domain/user";
-import { Box, Card, CardBody } from "@chakra-ui/react";
+import { Box, Card, CardBody, Heading } from "@chakra-ui/react";
+import { IoLogoGithub } from "react-icons/io5";
+import { SiQiita } from "react-icons/si";
+import { RiTwitterXFill } from "react-icons/ri";
 
 export const UserCard = function UserCard() {
   const { id } = useParams();
@@ -22,31 +25,56 @@ export const UserCard = function UserCard() {
     return <h1>loading…</h1>;
   }
   return (
-    <Box display="flex" justifyContent="center">
-      <Box width="sm" maxW={400}>
+    <Box
+      height="100vh"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      bg="#C4F1F9"
+    >
+      <Box width="sm" p={4}>
         {user?.map((user) => {
           return (
             <Card key={user.id}>
               <CardBody>
-                <p>名前:{user.name}</p>
-                <p>
-                  自己紹介:
+                <Box>
+                  <Heading as="h1" size="lg" mb={4}>
+                    {user.name}
+                  </Heading>
+                </Box>
+                <Box mb={2}>
+                  <Heading as="h2" size="md">
+                    自己紹介
+                  </Heading>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: user.description,
                     }}
                   />
-                </p>
-                <p>スキル:{user.skill_name}</p>
-                <p>
-                  <a href={user.getGithubUrl(user.github_id)}>Github</a>
-                </p>
-                <p>
-                  <a href={user.getQiitaUrl(user.qiita_id)}>Qiita</a>
-                </p>
-                <p>
-                  <a href={user.getXUrl(user.x_id)}>X</a>
-                </p>
+                </Box>
+                <Box mb={2}>
+                  <Heading as="h2" size="md">
+                    好きな技術
+                  </Heading>
+                  {user.skill_name}
+                </Box>
+                <Box display="flex" justifyContent="center">
+                  <Box w="33%" textAlign="center">
+                    <a href={user.getGithubUrl(user.github_id)}>
+                      <IoLogoGithub fontSize="40px" />
+                    </a>
+                  </Box>
+                  <Box w="33%" textAlign="center">
+                    <a href={user.getQiitaUrl(user.qiita_id)}>
+                      <SiQiita fontSize="40px" />
+                    </a>
+                  </Box>
+                  <Box w="33%" textAlign="center">
+                    <a href={user.getXUrl(user.x_id)}>
+                      <RiTwitterXFill fontSize="40px" />
+                    </a>
+                  </Box>
+                </Box>
               </CardBody>
             </Card>
           );
