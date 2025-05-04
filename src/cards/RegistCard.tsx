@@ -50,13 +50,19 @@ export const RegistCard = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <Card boxShadow="none">
               <FormControl mb={4}>
-                <FormLabel>好きな英単語</FormLabel>
+                <FormLabel>
+                  好きな英単語 <span style={{ color: "red" }}>*</span>
+                </FormLabel>
                 <Input
                   {...register("id", {
+                    required: true,
                     pattern: /^[A-Za-z]*$/,
                   })}
                   type="text"
                 />
+                {errors.id?.type === "required" && (
+                  <p style={{ color: "red" }}>好きな英単語は必須です</p>
+                )}
                 {errors.id?.type === "pattern" && (
                   <p style={{ color: "red" }}>
                     英語のみ入力可能です
