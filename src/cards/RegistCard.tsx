@@ -10,18 +10,18 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { insertData } from "../utils/supabaseFunctions";
+import { User } from "../domain/user";
 
 export const RegistCard = () => {
-  type Form = {
-    name: string;
-  };
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit: SubmitHandler<Form> = (data) => console.log(data);
-  console.log(errors);
+  const onSubmit: SubmitHandler<Partial<User>> = async (data) => {
+    await insertData(data);
+  };
 
   return (
     <>
@@ -86,10 +86,10 @@ export const RegistCard = () => {
                 </FormLabel>
                 <Textarea
                   resize="vertical"
-                  {...register("selfIntroduction", { required: true })}
+                  {...register("description", { required: true })}
                   placeholder="<h1>HTMLタグも使えます</h1>"
                 />
-                {errors.selfIntroduction?.type === "required" && (
+                {errors.description?.type === "required" && (
                   <p style={{ color: "red" }}>自己紹介は必須です</p>
                 )}
               </FormControl>
@@ -98,28 +98,28 @@ export const RegistCard = () => {
                   好きな技術 <span style={{ color: "red" }}>*</span>
                 </FormLabel>
                 <Select
-                  {...register("favoriteTechnique", { required: true })}
+                  {...register("favorite_technique_id", { required: true })}
                   placeholder="選んでね"
                 >
-                  <option>Github</option>
-                  <option>Qiita</option>
-                  <option>X</option>
+                  <option value={1}>React</option>
+                  <option value={2}>TypeScript</option>
+                  <option value={3}>Github</option>
                 </Select>
-                {errors.favoriteTechnique?.type === "required" && (
+                {errors.favorite_technique_id?.type === "required" && (
                   <p style={{ color: "red" }}>好きな技術は必須です</p>
                 )}
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>GithubId</FormLabel>
-                <Input type="text" />
+                <Input type="text" {...register("github_id")} />
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>QiitaId</FormLabel>
-                <Input type="text" />
+                <Input type="text" {...register("qiita_id")} />
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel>TwitterId</FormLabel>
-                <Input type="text" />
+                <FormLabel>XId</FormLabel>
+                <Input type="text" {...register("x_id")} />
               </FormControl>
               <Button mt={4} colorScheme="teal" type="submit">
                 登録

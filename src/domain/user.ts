@@ -7,6 +7,7 @@ export class User {
     public github_id: string,
     public qiita_id: string,
     public x_id: string,
+    public favorite_technique_id: number = 0,
     public github_url: string = "",
     public qiita_url: string = "",
     public x_url: string = " "
