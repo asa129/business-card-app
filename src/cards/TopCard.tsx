@@ -7,10 +7,10 @@ import {
   FormLabel,
   Heading,
   Input,
-  Link,
+  Link as LinkUi,
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { User } from "../domain/user";
 
 export const TopCard = () => {
@@ -79,7 +79,9 @@ export const TopCard = () => {
           </form>
         </Box>
         <Box textAlign="center" m={6}>
-          <Link>新規登録はこちら</Link>
+          <LinkUi>
+            <Link to="/cards/register">新規登録はこちら</Link>
+          </LinkUi>
         </Box>
       </Box>
     </>
