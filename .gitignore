@@ -23,3 +23,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 一時的に除外する
+src/domain/Url.ts
+src/domain/user2.ts
