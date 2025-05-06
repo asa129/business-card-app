@@ -7,7 +7,7 @@ import { IoLogoGithub } from "react-icons/io5";
 import { SiQiita } from "react-icons/si";
 import { RiTwitterXFill } from "react-icons/ri";
 
-export const UserCard = function UserCard() {
+export const UserCard = () => {
   const { id } = useParams();
   const [loadingFlag, setLoadingFlag] = useState(true);
   const [user, setUser] = useState<User[]>();

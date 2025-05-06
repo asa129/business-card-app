@@ -12,8 +12,10 @@ import {
 import { useForm, SubmitHandler } from "react-hook-form";
 import { insertData } from "../utils/supabaseFunctions";
 import { User } from "../domain/user";
+import { useNavigate } from "react-router";
 
 export const RegistCard = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,6 +23,7 @@ export const RegistCard = () => {
   } = useForm();
   const onSubmit: SubmitHandler<Partial<User>> = async (data) => {
     await insertData(data);
+    navigate("/");
   };
 
   return (
