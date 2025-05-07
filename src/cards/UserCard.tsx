@@ -40,7 +40,7 @@ export const UserCard = () => {
             <Card key={user.id}>
               <CardBody>
                 <Box>
-                  <Heading as="h1" size="lg" mb={4}>
+                  <Heading as="h1" size="lg" mb={4} data-testid="name">
                     {user.name}
                   </Heading>
                 </Box>
