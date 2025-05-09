@@ -49,6 +49,7 @@ export const UserCard = () => {
                     自己紹介
                   </Heading>
                   <div
+                    data-testid="description"
                     dangerouslySetInnerHTML={{
                       __html: user.description,
                     }}
@@ -58,22 +59,22 @@ export const UserCard = () => {
                   <Heading as="h2" size="md">
                     好きな技術
                   </Heading>
-                  {user.skill_name}
+                  <div data-testid="favorite_skill">{user.skill_name}</div>
                 </Box>
                 <Box display="flex" justifyContent="center">
                   <Box w="33%" textAlign="center">
                     <a href={user.getGithubUrl(user.github_id)}>
-                      <IoLogoGithub fontSize="40px" />
+                      <IoLogoGithub data-testid="github-icon" fontSize="40px" />
                     </a>
                   </Box>
                   <Box w="33%" textAlign="center">
                     <a href={user.getQiitaUrl(user.qiita_id)}>
-                      <SiQiita fontSize="40px" />
+                      <SiQiita data-testid="qiita-icon" fontSize="40px" />
                     </a>
                   </Box>
                   <Box w="33%" textAlign="center">
                     <a href={user.getXUrl(user.x_id)}>
-                      <RiTwitterXFill fontSize="40px" />
+                      <RiTwitterXFill data-testid="x-icon" fontSize="40px" />
                     </a>
                   </Box>
                 </Box>
@@ -83,7 +84,13 @@ export const UserCard = () => {
         })}
       </Box>
       <Box width="sm" p={4} textAlign="center">
-        <Button w="100%" mt={4} colorScheme="teal" onClick={() => navigate(-1)}>
+        <Button
+          w="100%"
+          mt={4}
+          colorScheme="teal"
+          data-testid="remove-button"
+          onClick={() => navigate(-1)}
+        >
           戻る
         </Button>
       </Box>
