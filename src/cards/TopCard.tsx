@@ -21,10 +21,8 @@ export const TopCard = () => {
     formState: { errors },
   } = useForm();
   const onClickSeeCard: SubmitHandler<Partial<User>> = async (data) => {
-    console.log(data);
     navigate(`/cards/${data.id}`);
   };
-  console.log(errors);
 
   return (
     <>
@@ -38,7 +36,7 @@ export const TopCard = () => {
         flexDirection="column"
       >
         <Box textAlign="center" mb={6}>
-          <Heading as="h1" size="lg">
+          <Heading as="h1" size="lg" data-testid="title">
             デジタル名刺アプリ
           </Heading>
         </Box>
@@ -64,6 +62,7 @@ export const TopCard = () => {
                         message: "IDを入力してください",
                       },
                     })}
+                    data-testid="id"
                   />
                   {errors.id?.message !== "" && (
                     <p style={{ color: "red" }}>
@@ -71,7 +70,12 @@ export const TopCard = () => {
                     </p>
                   )}
                 </FormControl>
-                <Button colorScheme="teal" w="100%" type="submit">
+                <Button
+                  colorScheme="teal"
+                  w="100%"
+                  type="submit"
+                  data-testid="submit-button"
+                >
                   名刺を見る
                 </Button>
               </CardBody>
@@ -80,7 +84,9 @@ export const TopCard = () => {
         </Box>
         <Box textAlign="center" m={6}>
           <LinkUi>
-            <Link to="/cards/register">新規登録はこちら</Link>
+            <Link to="/cards/register" data-testid="register-link">
+              新規登録はこちら
+            </Link>
           </LinkUi>
         </Box>
       </Box>
