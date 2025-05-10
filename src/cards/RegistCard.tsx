@@ -38,7 +38,7 @@ export const RegistCard = () => {
         flexDirection="column"
       >
         <Box textAlign="center" mb={6}>
-          <Heading as="h1" size="lg">
+          <Heading as="h1" size="lg" data-testid="title">
             新規名刺登録
           </Heading>
         </Box>
