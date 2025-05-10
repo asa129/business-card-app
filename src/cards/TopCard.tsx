@@ -83,10 +83,8 @@ export const TopCard = () => {
           </form>
         </Box>
         <Box textAlign="center" m={6}>
-          <LinkUi>
-            <Link to="/cards/register" data-testid="register-link">
-              新規登録はこちら
-            </Link>
+          <LinkUi as={Link} to="/cards/register" data-testid="register-link">
+            新規登録はこちら
           </LinkUi>
         </Box>
       </Box>
