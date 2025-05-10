@@ -89,7 +89,7 @@ export const UserCard = () => {
           mt={4}
           colorScheme="teal"
           data-testid="remove-button"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/")}
         >
           戻る
         </Button>

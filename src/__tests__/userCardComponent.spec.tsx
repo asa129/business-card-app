@@ -84,6 +84,6 @@ describe("UserCard", () => {
     const removeButton = await screen.findByTestId("remove-button");
     await userEvent.click(removeButton);
 
-    expect(mockNavigate).toHaveBeenCalledWith(-1);
+    expect(mockNavigate).toHaveBeenCalledWith("/");
   });
 });
