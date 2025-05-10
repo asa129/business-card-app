@@ -62,6 +62,7 @@ export const RegistCard = () => {
                     pattern: /^[A-Za-z]*$/,
                   })}
                   type="text"
+                  data-testid="id"
                 />
                 {errors.id?.type === "required" && (
                   <p style={{ color: "red" }}>好きな英単語は必須です</p>
@@ -78,7 +79,11 @@ export const RegistCard = () => {
                 <FormLabel>
                   お名前 <span style={{ color: "red" }}>*</span>
                 </FormLabel>
-                <Input {...register("name", { required: true })} type="text" />
+                <Input
+                  {...register("name", { required: true })}
+                  type="text"
+                  data-testid="name"
+                />
                 {errors.name?.type === "required" && (
                   <p style={{ color: "red" }}>お名前は必須です</p>
                 )}
@@ -91,6 +96,7 @@ export const RegistCard = () => {
                   resize="vertical"
                   {...register("description", { required: true })}
                   placeholder="<h1>HTMLタグも使えます</h1>"
+                  data-testid="description"
                 />
                 {errors.description?.type === "required" && (
                   <p style={{ color: "red" }}>自己紹介は必須です</p>
@@ -103,6 +109,7 @@ export const RegistCard = () => {
                 <Select
                   {...register("favorite_technique_id", { required: true })}
                   placeholder="選んでね"
+                  data-testid="favorite_technique_id"
                 >
                   <option value={1}>React</option>
                   <option value={2}>TypeScript</option>
@@ -114,17 +121,30 @@ export const RegistCard = () => {
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>GithubId</FormLabel>
-                <Input type="text" {...register("github_id")} />
+                <Input
+                  type="text"
+                  {...register("github_id")}
+                  data-testid="github_id"
+                />
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>QiitaId</FormLabel>
-                <Input type="text" {...register("qiita_id")} />
+                <Input
+                  type="text"
+                  {...register("qiita_id")}
+                  data-testid="qiita_id"
+                />
               </FormControl>
               <FormControl mb={4}>
                 <FormLabel>XId</FormLabel>
-                <Input type="text" {...register("x_id")} />
+                <Input type="text" {...register("x_id")} data-testid="x_id" />
               </FormControl>
-              <Button mt={4} colorScheme="teal" type="submit">
+              <Button
+                mt={4}
+                colorScheme="teal"
+                type="submit"
+                data-testid="submit-button"
+              >
                 登録
               </Button>
             </Card>
