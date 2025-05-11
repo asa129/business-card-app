@@ -21,5 +21,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "types": ["node", "jest", "@testing-library/jest-dom"]
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }
