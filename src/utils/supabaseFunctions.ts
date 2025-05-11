@@ -57,3 +57,50 @@ export const insertData = async (data: Partial<User>) => {
     throw new Error(userSkillError.message);
   }
 };
+
+export const deleteData = async () => {
+  const now = new Date();
+  const yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+
+  // 昨日の開始時刻と終了時刻を ISO 形式で取得
+  const startOfYesterday = new Date(
+    yesterday.getFullYear(),
+    yesterday.getMonth(),
+    yesterday.getDate(),
+    0,
+    0,
+    0
+  ).toISOString();
+
+  const endOfYesterday = new Date(
+    yesterday.getFullYear(),
+    yesterday.getMonth(),
+    yesterday.getDate(),
+    23,
+    59,
+    59
+  ).toISOString();
+
+  // user_skill テーブルから削除
+  const { error: userSkillError } = await supabase
+    .from("user_skill")
+    .delete()
+    .gte("created_at", startOfYesterday)
+    .lte("created_at", endOfYesterday);
+
+  if (userSkillError) {
+    throw new Error(userSkillError.message);
+  }
+
+  // users テーブルから削除
+  const { error } = await supabase
+    .from("users")
+    .delete()
+    .gte("created_at", startOfYesterday)
+    .lte("created_at", endOfYesterday);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+};
