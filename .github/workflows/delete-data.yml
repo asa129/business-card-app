@@ -1,10 +1,12 @@
 name: Delete Data
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: "00 6 * * *"
+    - cron: "32 20 * * *"
 
 jobs:
-  say_hello:
+  delete_data:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World!"
+      - run: npx tsx ./batch/index.ts
