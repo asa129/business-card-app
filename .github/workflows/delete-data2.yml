@@ -1,0 +1,12 @@
+name: delete-data
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  delete_data:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "クーロン追加したよ"
