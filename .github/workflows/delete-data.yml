@@ -2,11 +2,10 @@ name: Delete Data
 
 on:
   schedule:
-    - cron: "00 6 * * *"
-    - cron: "45 11 * * *"
+    - cron: "50 11 * * *"
 
 jobs:
   delete_data:
     runs-on: ubuntu-latest
     steps:
-      - run: npx tsx ./batch/index.ts
+      - run: echo "クーロン追加したよ"
