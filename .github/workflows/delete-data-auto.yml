@@ -1,6 +1,8 @@
 name: delete-data-auto
 
 on:
+  schedule:
+    - cron: "0 21 * * *"
   workflow_dispatch:
 
 jobs:
