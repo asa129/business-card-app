@@ -2,7 +2,7 @@ name: Delete Data
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "* * * * *"
   workflow_dispatch:
 
 jobs:
