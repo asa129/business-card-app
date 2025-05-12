@@ -1,6 +1,11 @@
 name: "AI inference"
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "Prompt for the AI model"
+        required: true
 
 jobs:
   inference:
