@@ -60,26 +60,30 @@ export const insertData = async (data: Partial<User>) => {
 
 export const deleteData = async () => {
   const now = new Date();
-  const yesterday = new Date(now);
-  yesterday.setDate(now.getDate() - 1);
+  const JST_OFFSET = 9 * 60 * 60 * 1000; // 日本時間 (UTC+9) のオフセット
+  const yesterday = new Date(now.getTime() - JST_OFFSET - 24 * 60 * 60 * 1000);
 
-  // 昨日の開始時刻と終了時刻を ISO 形式で取得
+  // 日本時間で昨日の開始時刻と終了時刻を UTC 時間に変換
   const startOfYesterday = new Date(
-    yesterday.getFullYear(),
-    yesterday.getMonth(),
-    yesterday.getDate(),
-    0,
-    0,
-    0
+    Date.UTC(
+      yesterday.getUTCFullYear(),
+      yesterday.getUTCMonth(),
+      yesterday.getUTCDate(),
+      0,
+      0,
+      0
+    )
   ).toISOString();
 
   const endOfYesterday = new Date(
-    yesterday.getFullYear(),
-    yesterday.getMonth(),
-    yesterday.getDate(),
-    23,
-    59,
-    59
+    Date.UTC(
+      yesterday.getUTCFullYear(),
+      yesterday.getUTCMonth(),
+      yesterday.getUTCDate(),
+      23,
+      59,
+      59
+    )
   ).toISOString();
 
   // user_skill テーブルから削除
