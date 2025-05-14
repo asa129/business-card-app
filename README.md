@@ -1,54 +1,40 @@
-# React + TypeScript + Vite
+# デジタル名刺アプリ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![画面録画 2025-05-14 225608](https://github.com/user-attachments/assets/831df3cb-1b8f-4657-80ee-2413dda865c0)
 
-Currently, two official plugins are available:
+## 機能概要
+* IDを使用して、デジタル名刺を管理できるアプリです。
+* 名前、自己紹介を管理、GitHub・Qiita・Xへ容易に遷移できます。
+* スマートフォンでの使用を想定
+  
+## 必要環境
+* Node.js（推奨バージョン: 20 以上）
+* npm
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 使い方
+1. `新規登録はこちら`をクリック
+2. 登録情報を入力
+3. TOPページにて登録した好きな英単語を入力、「名刺を見る」ボタンを押下
+4. 登録したユーザーを確認できる
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## インストール
+1. パッケージインストール
+```bash:
+$ npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. 開発サーバー起動
+```bash:
+$ npm run dev
 ```
+
+3.ブラウザよりURLにアクセス
+
+### 環境変数設定
+1. ルート配下に`.env`ファイルを作成
+2. Supabaseでプロジェクトを作成し、URL、APIキーを取得、設定してください。
+```
+VITE_SUPABASE_URL=SupabaseURL
+VITE_SUPABASE_ANON_KEY=SupabaseAnonKey
+```
+
